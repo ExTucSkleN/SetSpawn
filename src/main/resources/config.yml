@@ -1,0 +1,30 @@
+# SetSpawn Plugin Configuration
+settings:
+  # Enable or disable the prefix for all plugin messages.
+  # Set to false if you want clean messages without the [SetSpawn] tag.
+  use-prefix: true
+
+  # Delay before teleporting to spawn (in seconds). Set to 0 for instant teleport.
+  spawn-warmup: 3
+  # Cancel the teleport if the player moves during warmup?
+  cancel-on-move: true
+  # Cooldown for the /spawn command (in seconds). Set to 0 to disable.
+  spawn-cooldown: 10
+
+messages:
+  # Prefix added to all plugin messages (only used if use-prefix is true)
+  prefix: "&8[&aSetSpawn&8] &r"
+
+  # General messages
+  no-permission: "&cYou do not have permission to use this command!"
+  player-only: "&cThis command can only be used by players."
+  setspawn-success: "&aSpawn point successfully set to your current location!"
+  spawn-success: "&aYou have been teleported to spawn!"
+
+  # Warmup and cooldown messages
+  spawn-warmup: "&eTeleporting in &6%seconds% &eseconds. Do not move!"
+  spawn-cancelled: "&cTeleportation cancelled because you moved."
+  spawn-cooldown: "&cPlease wait &6%seconds% &cseconds before using this again."
+
+  # Admin messages
+  reload-success: "&aConfiguration successfully reloaded!"

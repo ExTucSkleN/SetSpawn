@@ -1,0 +1,25 @@
+name: setspawn
+version: '${version}'
+main: net.setspawn.SetSpawn
+api-version: '1.21'
+description: Simple /setspawn and /spawn commands.
+author: YourName
+commands:
+  setspawn:
+    description: Set the server spawn point to your current location.
+    permission: setspawn.set
+    usage: /setspawn [reload]
+  spawn:
+    description: Teleport to the server spawn point.
+    permission: setspawn.use
+    usage: /spawn
+permissions:
+  setspawn.set:
+    description: Allows setting the spawn point.
+    default: op
+  setspawn.use:
+    description: Allows teleporting to the spawn point.
+    default: true
+  setspawn.reload:
+    description: Allows reloading the plugin config.
+    default: op
