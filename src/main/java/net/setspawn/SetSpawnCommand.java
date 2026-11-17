@@ -22,10 +22,21 @@ public class SetSpawnCommand implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    // Добавлены @NotNull перед параметрами
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
+        // 1. СНАЧАЛА обрабатываем команду reload (доступна и игрокам, и консоли)
+        if (command.getName().equalsIgnoreCase("setspawn") && args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+            if (!sender.hasPermission("setspawn.reload")) {
+                sender.sendMessage(plugin.getMessage("no-permission"));
+                return true;
+            }
+            plugin.reloadConfig();
+            sender.sendMessage(plugin.getMessage("reload-success"));
+            return true;
+        }
+
+        // 2. ТЕПЕРЬ проверяем, что отправитель — игрок (для остальных команд)
         if (!(sender instanceof Player player)) {
             sender.sendMessage(plugin.getMessage("player-only"));
             return true;
@@ -33,16 +44,6 @@ public class SetSpawnCommand implements CommandExecutor {
 
         // --- КОМАНДА /setspawn ---
         if (command.getName().equalsIgnoreCase("setspawn")) {
-            if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-                if (!player.hasPermission("setspawn.reload")) {
-                    player.sendMessage(plugin.getMessage("no-permission"));
-                    return true;
-                }
-                plugin.reloadConfig();
-                player.sendMessage(plugin.getMessage("reload-success"));
-                return true;
-            }
-
             if (!player.hasPermission("setspawn.set")) {
                 player.sendMessage(plugin.getMessage("no-permission"));
                 return true;
@@ -51,6 +52,7 @@ public class SetSpawnCommand implements CommandExecutor {
             Location loc = player.getLocation();
             player.getWorld().setSpawnLocation(loc);
             player.sendMessage(plugin.getMessage("setspawn-success"));
+            // Лог убран
             return true;
         }
 
