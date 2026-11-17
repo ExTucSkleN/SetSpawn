@@ -1,9 +1,8 @@
-name: setspawn
+name: SetSpawn
 version: '${version}'
 main: net.setspawn.SetSpawn
 api-version: '1.21'
 description: Simple /setspawn and /spawn commands.
-author: YourName
 commands:
   setspawn:
     description: Set the server spawn point to your current location.
