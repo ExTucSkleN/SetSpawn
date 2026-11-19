@@ -24,7 +24,6 @@ public class SetSpawnCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
         if (command.getName().equalsIgnoreCase("setspawn") && args.length > 0 && args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("setspawn.reload")) {
                 sender.sendMessage(plugin.getMessage("no-permission"));
