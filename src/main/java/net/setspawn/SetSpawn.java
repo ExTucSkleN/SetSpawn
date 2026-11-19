@@ -40,7 +40,6 @@ public final class SetSpawn extends JavaPlugin {
     }
 
     public Component getMessage(String path, String... placeholders) {
-        // Проверяем, включен ли префикс в конфиге (по умолчанию true)
         boolean usePrefix = getConfig().getBoolean("settings.use-prefix", true);
 
         String prefix = "";
