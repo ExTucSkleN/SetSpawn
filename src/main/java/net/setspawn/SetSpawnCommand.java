@@ -48,7 +48,6 @@ public class SetSpawnCommand implements CommandExecutor {
             Location loc = player.getLocation();
             player.getWorld().setSpawnLocation(loc);
             player.sendMessage(plugin.getMessage("setspawn-success"));
-            // Лог убран
             return true;
         }
 
