@@ -25,7 +25,6 @@ public class SetSpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        // 1. СНАЧАЛА обрабатываем команду reload (доступна и игрокам, и консоли)
         if (command.getName().equalsIgnoreCase("setspawn") && args.length > 0 && args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("setspawn.reload")) {
                 sender.sendMessage(plugin.getMessage("no-permission"));
@@ -36,13 +35,11 @@ public class SetSpawnCommand implements CommandExecutor {
             return true;
         }
 
-        // 2. ТЕПЕРЬ проверяем, что отправитель — игрок (для остальных команд)
         if (!(sender instanceof Player player)) {
             sender.sendMessage(plugin.getMessage("player-only"));
             return true;
         }
-
-        // --- КОМАНДА /setspawn ---
+        
         if (command.getName().equalsIgnoreCase("setspawn")) {
             if (!player.hasPermission("setspawn.set")) {
                 player.sendMessage(plugin.getMessage("no-permission"));
@@ -56,7 +53,6 @@ public class SetSpawnCommand implements CommandExecutor {
             return true;
         }
 
-        // --- КОМАНДА /spawn ---
         if (command.getName().equalsIgnoreCase("spawn")) {
             if (!player.hasPermission("setspawn.use")) {
                 player.sendMessage(plugin.getMessage("no-permission"));
